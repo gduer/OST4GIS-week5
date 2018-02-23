@@ -21,3 +21,7 @@ body {
     overflow-y: auto;
     padding: 20px;
 }
+
+.input-text{
+  margin-bottom:20px;
+}

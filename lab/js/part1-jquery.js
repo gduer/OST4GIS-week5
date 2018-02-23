@@ -170,6 +170,52 @@ var Stamen_TonerLite = L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/ton
 // This is a popular pattern that you'll run into in programs that run jQuery. It says not to run
 // the function passed to `ready` until the HTML document is fully loaded and all scripts have
 // been interpreted. It is, therefore, an example of asynchronous behavior.
+var carSearch = {};
+
 $(document).ready(function() {
   // Do your stuff here
+
+  $('button#my-button').click(function(e) {
+    carSearch.make = $('#text-input1').val();
+    carSearch.model = $('#text-input2').val();
+    carSearch.var = $('#text-input3').val();
+    carSearch.year = $('#numeric-input').val();
+    carSearch.used = $('#cbox-input1').prop('checked');
+    carSearch.photo = $('#cbox-input2').prop('checked');
+    carSearch.color = $('#color-input').val();
+    L.circleMarker([parseFloat($('#Lat-input').val()),parseFloat($('#Lon-input').val())],
+      {color: carSearch.color}).addTo(map).bindPopup(carSearch.year + " " + carSearch.make + " " + carSearch.model);
+    console.log(carSearch);
+  });
+
+  $('#main-heading').text('Car Search');
+
+  $('#text-label1').text('Make');
+  $('#text-input1').val('Honda');
+  $('#text-input1').prop('disabled', false);
+
+  $('#text-label2').text('Model');
+  $('#text-input2').val('Civic');
+  $('#text-input2').prop('disabled', false);
+
+  $('#text-label3').text('Variation');
+  $('#text-input3').val('CX Sedan');
+  $('#text-input3').prop('disabled', false);
+
+  $('#number-label').text('Year');
+  $('#numeric-input').val(2010);
+  $('#numeric-input').prop('disabled', false);
+
+  $('#checkbox-label1').text('Used?');
+  $('#cbox-input1').prop('checked', false);
+  $('#cbox-input1').prop('disabled', false);
+
+  $('#checkbox-label2').text('Has Photo?');
+  $('#cbox-input2').prop('checked', true);
+  $('#cbox-input2').prop('disabled', false);
+
+  $('#color-label').text('Color');
+  $('#color-input').val('#0000ff');
+  $('#color-input').prop('disabled', false);
+
 });
